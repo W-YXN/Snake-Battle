@@ -61,7 +61,7 @@ short SnakeLength;
 short SnakeEaten;
 short SnakeScore;
 short Mood, MoodTemp, MoodData[10];
-bool FoodAlready;
+int FoodAlready;
 short FruitAddition;
 
 //======================================================================================
@@ -363,7 +363,7 @@ void mood_check()
 
 void make_food()
 {
-	if (FoodAlready == false)
+	if (FoodAlready == 0)
 	{
 		while (true)
 		{
@@ -371,7 +371,7 @@ void make_food()
 			Food.y = _rand(29) + 1;
 			if (Maps[Food.x][Food.y] == 0)
 			{
-				FoodAlready = true;
+				FoodAlready++;
 				Maps[Food.x][Food.y] = 4;
 				gotoxy(StructureX + 2 * Food.x, StructureY + Food.y);
 				g_out(4, false);
@@ -379,7 +379,6 @@ void make_food()
 			}
 		}
 	}
-	FoodAlready = true;
 }
 
 void game_prepare()
@@ -438,7 +437,7 @@ void game_prepare()
 	SnakeBody[3].y = 1;
 	SnakeBody[4].x = 4;
 	SnakeBody[4].y = 1;
-	FoodAlready = false;
+	FoodAlready = 0;
 	Direct = __direct_right;
 	DirectTemp = __direct_right;
 	Mood = 0;
@@ -554,6 +553,9 @@ void mod_wall()
 }
 void wait()
 {
+	for (int i = SnakeLength + 1;i <= 900;i++) {
+		SnakeBody[i].x = SnakeBody[i].y = -1;
+	}
 	playsound(3);
 	SetConsoleTitle(TEXT("Ì°³ÔÉß    µÈ´ýÖÐ,Ê£ÓàÊ±¼ä:3.0Ãë"));
 	Sleep(100);
@@ -877,7 +879,7 @@ void eating_food(short id)
 	{
 	case 4:
 		SimpleFoodEaten++;
-		FoodAlready = false;
+		FoodAlready --;
 		SnakeEaten++;
 		SnakeScore += GameSettingsData[22];
 		break;
@@ -1196,7 +1198,7 @@ void read_players() {
 
 void game()
 {
-de_bug_restart:
+//de_bug_restart:
 	game_prepare();
 	make_food();
 	draw();
@@ -1212,6 +1214,8 @@ de_bug_restart:
 	SetConsoleTitle(TEXT("Ì°³ÔÉß    ÓÎÏ·ÖÐ"));
 	while (true)
 	{
+		gotoxy(0, 0);
+		cout << FoodAlready;
 		direction();
 		move();
 		make_food();
@@ -1222,7 +1226,7 @@ de_bug_restart:
 		//		cout<<Mood<<" "<<MoodData[1];
 		mood_check();
 		mood_manage();
-
+/*debug
 		if (KEY_DOWN('L'))
 		{
 			de_bug_draw();
@@ -1233,7 +1237,7 @@ de_bug_restart:
 		{
 			goto de_bug_restart;
 		}
-
+*/
 		if (GameData[0] != 0)
 		{
 			break;

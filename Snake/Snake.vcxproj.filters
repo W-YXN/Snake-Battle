@@ -36,6 +36,9 @@
     <ClInclude Include="INIReader.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CMyINI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -63,6 +66,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="audio.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CMyINI.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="command.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,5 +1,6 @@
 #include "Snake.h"
 #include "stdafx.h"
+#include "CMyINI.h"
 #include "INIReader.h"
 #include<iostream>
 #include<fstream>
@@ -44,7 +45,7 @@ string MapWay;
 string audioWay;
 playerInfo Player[12];
 bool ColorEggDifficulty = false;
-string SettingsTemplet[25] =
+string SettingsTemplet[] =
 {
 	"",
 	"color",
@@ -71,7 +72,7 @@ string SettingsTemplet[25] =
 	"difficulty",
 	">two_player"
 };
-string StatisticsTemplet[32] =
+string StatisticsTemplet[] =
 {
 	"",
 	"played",
@@ -161,6 +162,8 @@ void statistics_write()
 		statistics << StatisticsTemplet[i] << "=" << Player[s].score << endl;
 	}
 	statistics.close();
+
+	
 }
 
 void settings_write()

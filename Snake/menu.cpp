@@ -50,7 +50,7 @@ void playsound(short id);
 //======================================================================================
 
 int *MenuSettingsData;
-string MenuTextMenu[21][10] =
+string MenuTextMenu[][10] =
 {
 	{},
 	{
