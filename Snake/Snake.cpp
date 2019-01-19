@@ -1,4 +1,4 @@
-// Snake.cpp : ¶¨Òå¿ØÖÆÌ¨Ó¦ÓÃ³ÌĞòµÄÈë¿Úµã¡£
+// Snake.cpp : å®šä¹‰æ§åˆ¶å°åº”ç”¨ç¨‹åºçš„å…¥å£ç‚¹ã€‚
 //
 
 #include "stdafx.h"
@@ -36,42 +36,41 @@ int *SnakeSettingsData;
 
 int main()
 {
-	prepare();
-	main_menu();
-	gotoxy(1, 26);
-	return 0;
+	prepare();//å‡†å¤‡ç¨‹åº
+	main_menu();//ä¸»ç•Œé¢
+	return 0;//é€€å‡º
 }
 
 void prepare()
 {
-	SnakeSettingsData = settings_synchronization();
-	SnakeSettingsData[3] = 1;
-	audio_settings_synchronization();
+	SnakeSettingsData = settings_synchronization();//åŒæ­¥
+	SnakeSettingsData[3] = 1;//å…è®¸è‰²å½©
+	audio_settings_synchronization();//åŒæ­¥
 	videos_settings_synchronization();
 	menu_settings_synchronization();
 	print_settings_synchronization();
 	Game_settings_synchronization();
-	hide_mouse();//×¼±¸
-	SetConsoleTitle(TEXT("Ì°³ÔÉß"));
+	hide_mouse();//éšè—é¼ æ ‡
+	SetConsoleTitle(TEXT("è´ªåƒè›‡"));//æ ‡é¢˜
 //	system("path=%path%c:\\Windows\\System32\\");
-	system("mode con cols=80 lines=31");
+	system("mode con cols=80 lines=31");//çª—å£å¤§å°
 //	windowssize(80, 30);
 
-	check();
-	SetConsoleTitle(TEXT("Ì°³ÔÉß"));
-	op();
-	files_read();
+	check();//æ£€æŸ¥æ–‡ä»¶
+	SetConsoleTitle(TEXT("è´ªåƒè›‡"));//æ ‡é¢˜
+	op();//å¼€å¯å¥½ã€åŠ¨ç”»
+	files_read();//è¯»æ–‡ä»¶
 }
 
-int _rand(int x)
+int _rand(int x)//éšæœºæ•°
 {
-	srand((int)time(0) + rand());//ÉèÖÃÖÖ×ÓÎªÊ±¼ä+Ëæ»úÊı
+	srand((int)time(0) + rand());//è®¾ç½®ç§å­ä¸ºæ—¶é—´+éšæœºæ•°
 	int a;
-	a = rand() % x;//È¡0~xµÄËæ»úÊı
-	return a;//·µ»ØÈ¡µÄÊı
+	a = rand() % x;//å–0~xçš„éšæœºæ•°
+	return a;//è¿”å›å–çš„æ•°
 }
 
-void gotoxy(short x, short y)
+void gotoxy(short x, short y)//ç§»åŠ¨å…‰æ ‡
 {
 	COORD coord;
 	coord.X = x;
@@ -79,16 +78,16 @@ void gotoxy(short x, short y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-void hide_mouse()
+void hide_mouse()//éšè—é¼ æ ‡
 {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	CONSOLE_CURSOR_INFO CursorInfo;
-	GetConsoleCursorInfo(handle, &CursorInfo);//»ñÈ¡¿ØÖÆÌ¨¹â±êĞÅÏ¢
-	CursorInfo.bVisible = false; //Òş²Ø¿ØÖÆÌ¨¹â±ê
-	SetConsoleCursorInfo(handle, &CursorInfo);//ÉèÖÃ¿ØÖÆÌ¨¹â±ê×´Ì¬
+	GetConsoleCursorInfo(handle, &CursorInfo);//è·å–æ§åˆ¶å°å…‰æ ‡ä¿¡æ¯
+	CursorInfo.bVisible = false; //éšè—æ§åˆ¶å°å…‰æ ‡
+	SetConsoleCursorInfo(handle, &CursorInfo);//è®¾ç½®æ§åˆ¶å°å…‰æ ‡çŠ¶æ€
 }
 
-bool AllisNum(string str)
+bool AllisNum(string str)//æ£€æŸ¥æ˜¯stringæ˜¯å¦å…¨ä¸ºæ•°å­—
 {
 	for (unsigned int i = 0; i < str.size(); i++)
 	{
@@ -105,6 +104,7 @@ bool AllisNum(string str)
 	return true;
 }
 
+/*åºŸå¼ƒ
 int wifi_check(int x, int i)
 {
 	int s = 0;
@@ -134,18 +134,20 @@ int wifi_check(int x, int i)
 	}
 	return s % 10;
 }
-
-void wrong_end()
+*/
+void wrong_end()//é”™è¯¯é€€å‡º
 {
 	system("cls");
 	Sleep(500);
 	exit(0);
 }
 
+/*å¤±è´¥çš„æµ‹è¯•
 void windowssize(short x, short y)
 {
-	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);//µÃµ½´°¿Ú¾ä±ú
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);//å¾—åˆ°çª—å£å¥æŸ„
 	COORD size = { x,y };
-	SMALL_RECT rc = { 1,1, x, y+1 }; //{YÎ»ÖÃ,XÎ»ÖÃ,¿í,¸ß}
-	SetConsoleWindowInfo(hOut, true, &rc);// ÖØÖÃ´°¿ÚÎ»ÖÃºÍ´óĞ¡
+	SMALL_RECT rc = { 1,1, x, y+1 }; //{Yä½ç½®,Xä½ç½®,å®½,é«˜}
+	SetConsoleWindowInfo(hOut, true, &rc);// é‡ç½®çª—å£ä½ç½®å’Œå¤§å°
 }
+*/
