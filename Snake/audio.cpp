@@ -41,18 +41,18 @@ struct audioInof {
 
 short AudioData[10];
 int *AudioSettingsData;
-string AudioNames[11] = {
+string AudioNames[] = {
 	"",
-	"start.wav",//1.ï¿½ï¿½Ê¼
-	"enter.wav",//2.ï¿½ï¿½ï¿½ï¿½
-	"back.wav",//3.ï¿½ï¿½ï¿½ï¿½
-	"exciting.wav",//4.ï¿½Ë·ï¿½
-	"eating.wav",//5.ï¿½ï¿½Ê³
-	"danger.wav",//6.Î£ï¿½ï¿½
-	"lose.wav",//7.Ê§ï¿½ï¿½
-	"win.wav",//8.Ê¤ï¿½ï¿½
-	"death.wav",//9.ï¿½ï¿½ï¿½ï¿½
-	"escape.wav"//10.ï¿½ï¿½ï¿½ï¿½
+	"start.wav",//1.¿ªÊ¼
+	"enter.wav",//2.½øÈë
+	"back.wav",//3.·µ»Ø
+	"exciting.wav",//4.ÐË·Ü
+	"eating.wav",//5.½øÊ³
+	"danger.wav",//6.Î£ÏÕ
+	"lose.wav",//7.Ê§Âä
+	"win.wav",//8.Ê¤Àû
+	"death.wav",//9.ËÀÍö
+	"escape.wav"//10.ÌÓÅÜ
 };
 //======================================================================================
 
@@ -88,7 +88,7 @@ void playsound(short id) {
 void audio_initialization() {
 	ofstream audio;
 	audio.open("audio.ini", ios::trunc);
-	audio << "//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½â£¬ï¿½ï¿½ï¿½å·½Ê½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ï¿½ï¿½" << endl
+	audio << "//ÔÚÕâÀïÌí¼ÓÒôÆµ¿â£¬¾ßÌå·½Ê½Çë²éÔÄ°ïÖú£¬ÉÏÏÞ10¸ö£¡" << endl
 		<< "[audio]" << endl
 		<< "total=1" << endl
 		<< "choice=1" << endl
@@ -97,7 +97,7 @@ void audio_initialization() {
 }
 
 bool Integrity_check(string st) {
-	//ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//ÓÃÓÚÍ¨¹ý²âÊÔ
 	//return true;
 	string str;
 	char c[100];
@@ -119,7 +119,7 @@ bool Integrity_check(string st) {
 void audio_tidy() {
 	ofstream audio;
 	audio.open("audio.ini", ios::trunc);
-	audio << "//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½â£¬ï¿½ï¿½ï¿½å·½Ê½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½ï¿½ï¿½" << endl
+	audio << "//ÔÚÕâÀïÌí¼ÓÒôÆµ¿â£¬¾ßÌå·½Ê½Çë²éÔÄ°ïÖú£¬ÉÏÏÞ10¸ö£¡" << endl
 		<< "[audio]" << endl
 		<< "choice=" << to_string(AudioData[2]) << endl
 		<< "total=" << to_string(AudioData[1]) << endl;
@@ -132,9 +132,9 @@ void audio_tidy() {
 void audio_read_wrong()
 {
 	Sleep(200);
-	warning("                ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½                ", " .\\ï¿½ï¿½audio.iniï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Þ·ï¿½ï¿½ï¿½È¡ ", "               ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½               ", "", "");
+	warning("                ÎÄ¼þ´íÎó                ", " .\\¡°audio.ini¡±ÒÑ¾­±»¸ü¸Ä£¬ÎÞ·¨¶ÁÈ¡ ", "               ¼´½«³õÊ¼»¯               ", "", "");
 	gotoxy(24, 20);
-	color_out("      ï¿½ï¿½ï¿½Ú³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½audio.iniï¿½ï¿½                     ", 1);
+	color_out("      ÕýÔÚ³õÊ¼»¯¡°audio.ini¡±                     ", 1);
 	Sleep(_rand(50) + 50);
 	pogress_bar();
 	audio_initialization();
@@ -144,15 +144,15 @@ void audio_read_wrong()
 	pogress_bar();
 	Sleep(_rand(50) + 50);
 	gotoxy(24, 20);
-	color_out("          ï¿½ï¿½ï¿½Ú¶ï¿½È¡ï¿½ï¿½Æµï¿½ï¿½                         ", 1);
+	color_out("          ÕýÔÚ¶ÁÈ¡ÒôÆµ¿â                         ", 1);
 }
 
 void audio_read_warning(short s)
 {
 	Sleep(200);
-	warning("                ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½                ", "     .\\ï¿½ï¿½audio.iniï¿½ï¿½ï¿½Ð´ï¿½ï¿½ó²¿·ï¿½   ", "             ï¿½ï¿½ï¿½ï¿½"+to_string(s)+"ï¿½ï¿½Ê§Ð§ï¿½ï¿½ï¿½ï¿½     ", "", "");
+	warning("                ÎÄ¼þ´íÎó                ", "     .\\¡°audio.ini¡±ÓÐ´íÎó²¿·Ö   ", "             ¹²ÓÐ"+to_string(s)+"¸öÊ§Ð§ÄÚÈÝ     ", "", "");
 	gotoxy(24, 20);
-	color_out("       ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½audio.iniï¿½ï¿½                     ", 1);
+	color_out("       ÕýÔÚÕûÀí¡°audio.ini¡±                     ", 1);
 	Sleep(_rand(50) + 50);
 	pogress_bar();
 	audio_tidy();
@@ -162,12 +162,12 @@ void audio_read_warning(short s)
 	pogress_bar();
 	Sleep(_rand(50) + 50);
 	gotoxy(24, 20);
-	color_out("          ï¿½ï¿½ï¿½Ú¶ï¿½È¡ï¿½ï¿½Æµï¿½ï¿½                        ", 1);
+	color_out("          ÕýÔÚ¶ÁÈ¡ÒôÆµ¿â                        ", 1);
 }
 
 void audio_no_warning(){
 	Sleep(200);
-	wrong("                ï¿½Ä¼ï¿½ï¿½ï¿½Ê§                ", "           Ã»ï¿½Ð¿ï¿½ï¿½Ãµï¿½ï¿½ï¿½Æµï¿½ï¿½   ", "     ï¿½ï¿½Æµï¿½ï¿½ï¿½Ø±Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½     ", "", "");
+	wrong("                ÎÄ¼þ¶ªÊ§                ", "           Ã»ÓÐ¿ÉÓÃµÄÒôÆµ¿â   ", "     ÒôÆµ½«¹Ø±Õ£¬Äú¿ÉÒÔÉÔºó×ÔÐÐ¿ªÆô     ", "", "");
 	gotoxy(30, 17);
 	system("pause");
 	wrong_cover();
@@ -243,7 +243,7 @@ start:
 bool audio_open() {
 	system("cls");
 	gotoxy(24, 20);
-	color_out("       ï¿½ï¿½ï¿½Ú¶ï¿½È¡ï¿½ï¿½Æµï¿½ï¿½                         ", 1);
+	color_out("       ÕýÔÚ¶ÁÈ¡ÒôÆµ¿â                         ", 1);
 	Sleep(_rand(50) + 50);
 	pogress_bar();
 	Sleep(_rand(50) + 50);
@@ -317,9 +317,9 @@ start:
 void audio_DIY_menu() {
 	main_menu_video();
 	hide_mouse();
-	SetConsoleTitle(TEXT("Ì°ï¿½ï¿½ï¿½ï¿½    ï¿½Ô¶ï¿½ï¿½ï¿½Â·ï¿½ï¿½"));
+	SetConsoleTitle(TEXT("Ì°³ÔÉß    ×Ô¶¨ÒåÂ·¾¶"));
 	gotoxy(4, 26);
-	c_out(" Tips:ï¿½ï¿½ï¿½ï¿½W/Sï¿½Ð»ï¿½Ñ¡ï¿½ï¿½,Cï¿½ï¿½ï¿½æ²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½                                   ", 2);
+	c_out(" Tips:°´ÏÂW/SÇÐ»»Ñ¡Ïî,C±£´æ²¢·µ»ØÉÏÒ»¼¶                                   ", 2);
 	short choose = AudioData[2];
 	short id = 14;
 	bool temp = true;
@@ -328,8 +328,8 @@ void audio_DIY_menu() {
 	int x1 = 33;
 	help_print(0, 1);
 
-	shade_out(" ï¿½Ô¶ï¿½ï¿½ï¿½Â·ï¿½ï¿½ ", x1, y1, 50, false);
-	shade_out("ï¿½ï¿½Ç°Ñ¡ï¿½ï¿½:", x, y + 1, 50,false);
+	shade_out(" ×Ô¶¨ÒåÂ·¾¶ ", x1, y1, 50, false);
+	shade_out("µ±Ç°Ñ¡¶¨:", x, y + 1, 50,false);
 	short k = 1;
 	for (short i = choose;i <= (short)min(7, AudioData[1]);i++) {
 		shade_out(AudioName[i].name, x + 10, y + k, 50, false);
@@ -398,7 +398,7 @@ void audio_DIY_menu() {
 
 void audio_settings() {
 	if (AudioSettingsData[3] == 0) {
-		wrong("                Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½              ", "           ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½è¿ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½         ", "                                        ", "", "           Y:ï¿½ï¿½ï¿½ï¿½      N:È¡ï¿½ï¿½           ");
+		wrong("                Î´¿ªÆôÉùÒô              ", "           ½øÈë×Ô¶¨ÒåÐè¿ªÆôÉùÒô         ", "                                        ", "", "           Y:¿ªÆô      N:È¡Ïû           ");
 		while (true)
 		{
 			if (KEY_DOWN('Y'))

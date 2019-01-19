@@ -25,7 +25,7 @@ void playsound(short id);
 int *VideoSettingsData;
 int *VideoStatisticsData;
 
-string VideoTextMenu[21][10] = 
+string VideoTextMenu[][10] = 
 {
 	{},
 	{
@@ -119,7 +119,7 @@ string VideoTextMenu[21][10] =
 	}
 };
 
-string TextHelp[21][11] =
+string TextHelp[][11] =
 {
 	{
 		"                                                                                       ",
