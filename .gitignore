@@ -1,0 +1,8 @@
+/**/*.sln
+/**/*.vcxproj
+/**/*.vcxproj.*
+/**/.vs/
+/**/x64/
+/**/Debug/
+/**/Release/
+/**/.vscode/
